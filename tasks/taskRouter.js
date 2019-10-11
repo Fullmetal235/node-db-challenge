@@ -30,4 +30,6 @@ router.post('/', (req, res) => {
         res.status(500).json({ Error: "Error posting task." })
       })
   }
-    )  
+    );
+    
+    module.exports = router;
