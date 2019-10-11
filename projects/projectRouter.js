@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
-const Projects = require('./projectsModel');
+const Projects = require('./projectModel');
 
 router.get('/', (req, res) =>{
     Projects.getProjects()
-    project.forEach(proj => {
+    .then(project => {
+      project.forEach(proj => {
         if(proj.complete == 1){
           proj.complete = true;
         } else if(proj.complete == 0) {
@@ -17,7 +18,9 @@ router.get('/', (req, res) =>{
     .catch(err => {
       console.log(err);
       res.status(500).json({Error: "Error getting projects."})
-    });
+    })
+  });
+  
 router.post('/',  (req, res) => {
     Projects.addProject()
     .then(project =>{
