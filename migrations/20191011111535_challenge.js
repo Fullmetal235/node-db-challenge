@@ -13,7 +13,7 @@ exports.up = function(knex) {
         .unique();
       tbl.string('description', 1000);
     })
-    
+
     .createTable('projects_resources', tbl => {
       tbl.increments();
       tbl.integer('projectID')
@@ -47,5 +47,8 @@ exports.up = function(knex) {
   };
   
   exports.down = function(knex) {
-    
+     return knex.schema.dropTableIfExists('projects_resources')
+        .dropTableIfExists('tasks')
+        .dropTableIfExists('resources')
+        .dropTableIfExists('projects')
   };
