@@ -22,7 +22,7 @@ router.get('/', (req, res) =>{
   });
   
 router.post('/',  (req, res) => {
-    Projects.addProject()
+    Projects.addProject(req.body)
     .then(project =>{
         res.status(200).json(project);
     })

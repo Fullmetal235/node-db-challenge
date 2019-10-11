@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
           })
       });
 router.post('/', (req, res) => {
-    Tasks.addTask()
+    Tasks.addTask(req.body)
     .then(task => {
         res.status(200).json(task);
       })
@@ -29,7 +29,6 @@ router.post('/', (req, res) => {
         console.log(err);
         res.status(500).json({ Error: "Error posting task." })
       })
-  }
-    );
+  });
     
     module.exports = router;
